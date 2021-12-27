@@ -1,16 +1,18 @@
 import React, { useState } from "react";
-import { signup } from "../services/auth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./auth.css";
 import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+const API_URL = process.env.REACT_APP_SERVER_URL;
+
 
 export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
+    email:"",
     password: "",
   });
-  const { username, password } = form;
+  const { username, email, password } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -21,23 +23,17 @@ export default function Signup({ authenticate }) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    const credentials = {
-      username,
-      password,
-    };
-    signup(credentials).then((res) => {
-      if (!res.status) {
-        // unsuccessful signup
-        console.error("Signup was unsuccessful: ", res);
-        return setError({
-          message: "Signup was unsuccessful! Please check the console.",
-        });
-      }
-      // successful signup
-      USER_HELPERS.setUserToken(res.data.accessToken);
-      authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
-    });
+
+    axios
+      .post(`${API_URL}/auth/signup`, form)
+      .then((createdUser) => {
+        console.log(createdUser);
+        navigate(PATHS.LOGINPAGE);
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setError(errorDescription);
+      });
   }
 
   return (
@@ -51,6 +47,17 @@ export default function Signup({ authenticate }) {
           name="username"
           placeholder="Text"
           value={username}
+          onChange={handleInputChange}
+          required
+        />
+
+        <label htmlFor="input-email">Email</label>
+        <input
+          id="input-email"
+          type="text"
+          name="email"
+          placeholder="Text"
+          value={email}
           onChange={handleInputChange}
           required
         />

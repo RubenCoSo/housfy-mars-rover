@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { login } from "../services/auth";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Signup";
 import * as PATHS from "../utils/paths";
-import * as USER_HELPERS from "../utils/userToken";
+import { AuthContext } from "../context/auth.context";
+const API_URL = process.env.REACT_APP_SERVER_URL;
 
 export default function LogIn({ authenticate }) {
   const [form, setForm] = useState({
@@ -12,6 +14,7 @@ export default function LogIn({ authenticate }) {
   });
   const { username, password } = form;
   const [error, setError] = useState(null);
+  const { logInUser } = useContext(AuthContext);
   const navigate = useNavigate();
 
   function handleInputChange(event) {
@@ -22,18 +25,21 @@ export default function LogIn({ authenticate }) {
 
   function handleFormSubmission(event) {
     event.preventDefault();
-    const credentials = {
-      username,
-      password,
-    };
-    login(credentials).then((res) => {
-      if (!res.status) {
-        return setError({ message: "Invalid credentials" });
-      }
-      USER_HELPERS.setUserToken(res.data.accessToken);
-      authenticate(res.data.user);
-      navigate(PATHS.HOMEPAGE);
-    });
+
+    axios
+      .post(`${API_URL}/auth/login`, form)
+      .then((response) => {
+        console.log(`JWT token`, response.data.authToken);
+
+        const token = response.data.authToken;
+        logInUser(token);
+        navigate(PATHS.HOMEPAGE);
+      })
+      .catch((error) => {
+        console.log(error);
+        const errorDescription = error.response.data.message;
+        setError(errorDescription);
+      });
   }
 
   return (
