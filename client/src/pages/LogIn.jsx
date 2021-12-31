@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react";
-import { login } from "../services/auth";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Signup";

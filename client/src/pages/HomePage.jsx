@@ -15,7 +15,7 @@ function HomePage(props) {
   return (
     <div>
       <h1>Rover On Mars</h1>
-      <button><Link to={PATHS.NEWMISSION}>New Mission</Link></button>
+      <button><Link to={PATHS.MISSION}>New Mission</Link></button>
       <button onClick={showHideInstructions}>Instructions</button>
       {isInstructionsShown ? 
         <div className="instructions">

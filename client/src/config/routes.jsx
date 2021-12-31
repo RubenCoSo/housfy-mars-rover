@@ -1,12 +1,13 @@
-import { Navigate } from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import Login from "../pages/LogIn";
 import Signup from "../pages/Signup";
-import ProtectedPage from "../pages/ProtectedPage";
+import MissionsLog from "../pages/MissionsLog";
+import Mission from "../pages/Mission";
 import * as PATHS from "../utils/paths";
 
+
+
 const routes = (props) => {
-  const { user } = props;
   return [
     {
       path: PATHS.HOMEPAGE,
@@ -22,13 +23,14 @@ const routes = (props) => {
       element: <Login {...props} />,
     },
     {
-      path: PATHS.PROTECTEDPAGE,
-      element: user ? (
-        <ProtectedPage {...props} />
-      ) : (
-        <Navigate to={PATHS.LOGINPAGE} replace />
-      ),
+      path: PATHS.MISSIONLOG,
+      element:
+        <MissionsLog {...props} />
     },
+    {
+      path: PATHS.MISSION,
+      element: <Mission {...props} />,
+    }
   ];
 };
 
