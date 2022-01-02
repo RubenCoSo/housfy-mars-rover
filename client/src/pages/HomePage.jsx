@@ -2,6 +2,7 @@ import * as PATHS from "../utils/paths";
 import "../App.css";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import marsGif from '../media/mars gif.gif'
 
 
 function HomePage(props) {
@@ -13,9 +14,10 @@ function HomePage(props) {
   }
 
   return (
-    <div>
+    <div className="home">
       <h1>Rover On Mars</h1>
-      <button><Link to={PATHS.MISSION}>New Mission</Link></button>
+      <img src={marsGif} alt='mars'/>
+      <button><Link className="linkButton" to={PATHS.MISSION}>New Mission</Link></button>
       <button onClick={showHideInstructions}>Instructions</button>
       {isInstructionsShown ? 
         <div className="instructions">

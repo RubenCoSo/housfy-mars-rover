@@ -8,6 +8,27 @@ form.auth__form {
 }
 
 button.button__submit {
-  max-width: 100px;
-  margin: 1em auto;
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  background-color: #e76d1b;
+  box-shadow: 0 0 5px 0 #af4d0c;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.2s ease-in-out;
+  position: sticky;
+  top: 0;
 }
+
+label{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  font-size: 1.5em;
+}
+input{
+  height: 2em;
+  font-size: 1.5em;
+}
+

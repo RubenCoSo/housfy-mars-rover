@@ -12,7 +12,7 @@ export const roverObj= {
 export const obstacleObj={
         dx:25,
         dy:25,
-        color:'red'
+        color:'#af4d0c'
     }
     
 export const baseObj={

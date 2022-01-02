@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState, useContext } from "react"
 import Board from "../components/MissionGame/Board";
 import * as CONSTANTS from "../components/MissionGame/gameConstants"
@@ -6,7 +7,7 @@ import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import * as PATHS from "../utils/paths";
 const API_URL = process.env.REACT_APP_SERVER_URL
-import axios from "axios";
+
 
 
 const numObstacles = 20
@@ -166,7 +167,9 @@ function Mission () {
         positionsArr = []
     }
 
-    function saveGame (){
+    function saveGame (event){
+
+        event.preventDefault()
 
         const userId = user._id
         const wrongInstructions = wrongInstructionCounter
@@ -176,21 +179,21 @@ function Mission () {
 
         const storedToken = localStorage.getItem("authToken");
 
-        axios
-      .post(`${API_URL}/saveGame`, requestBody, {
+        
+        axios.post(`${API_URL}/game/save`, requestBody, {
         headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        console.log(response);
+        }).then((response) => {
+            console.log(response);
+            setMissionName("");
+            setWrongInstructionCounter(0);
+            setInstructionCounter(0);
+            navigate(PATHS.HOMEPAGE)
+        })
+        .catch((error) => {
+            console.log(error);
+        });
 
-        setMissionName("");
-        setWrongInstructionCounter(0);
-        setInstructionCounter(0);
-        navigate(PATHS.HOMEPAGE);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+      
 
     }
     

@@ -1,5 +1,89 @@
 .App {
   text-align: center;
+  color: #e76d1b;
+}
+
+h1{
+  font-size: 2em;
+}
+h4{
+  font-size: 1.5em;
+}
+
+.missionsLog{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-size: 1.5em;
+}
+
+img{
+  padding-bottom: 2em;
+  padding-top: 2em;
+}
+td{
+  padding-top: 1em;
+}
+
+table{
+  width: 50%;
+}
+
+
+ul{
+  list-style: none;
+  font-size: 1.5em;
+}
+
+p{
+  font-size: 1.5em;
+}
+
+.home{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+label{
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-right: 1em;
+  font-size: 1.5em;
+}
+input{
+  height: 2em;
+  font-size: 1.5em;
+}
+
+
+.instructions{
+  width: 50%;
+  padding-top: 4em;
+
+}
+
+.linkButton{
+  text-decoration: none;
+  color: black;
+}
+
+button{
+  font-family: inherit;
+  font-weight: inherit;
+  padding: 0.5em 1em;
+  margin-left: 1em;
+  background-color: #e76d1b;
+  box-shadow: 0 0 5px 0 #af4d0c;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  color: black;
+  transition: all 0.2s ease-in-out;
+  position: sticky;
+  top: 0;
+  font-size: 2em;
+  margin-top: 2rem;
 }
 
 .App-logo {
@@ -39,5 +123,5 @@
 
 #canvas{
   margin-top: 50px;
-  background-color: orange;
+  background-color: #e76d1b;
 }

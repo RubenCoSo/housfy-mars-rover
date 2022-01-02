@@ -3,19 +3,21 @@ nav {
   padding: 1em;
   justify-content: space-around;
   flex-wrap: wrap;
-  background: #282c34;
+  background: #e76d1b;
   font-weight: 600;
 }
 
 .nav__projectName {
-  color: #e4f9ff;
+  color: black;
   text-decoration: none;
+  font-size:2em
 }
 
 .authLink {
-  color: #61dafb;
+  color: black;
   text-decoration: none;
   transition: color 0.2s ease-in-out;
+  font-size:1.5em
 }
 
 .authLink + .authLink {
@@ -31,18 +33,20 @@ nav {
   font-weight: inherit;
   padding: 0.5em 1em;
   margin-left: 1em;
-  background-color: #5595ff;
-  box-shadow: 0 0 5px 0 aliceblue;
+  background-color: black;
+  box-shadow: 0 0 5px 0 #af4d0c;
   border: none;
   border-radius: 2px;
   cursor: pointer;
-  color: #e3f2ff;
+  color: #e76d1b;
   transition: all 0.2s ease-in-out;
   position: sticky;
   top: 0;
+  font-size:1.5em
 }
 
 .nav-logoutbtn:hover {
   transform: scale(1.05);
   background-color: #d13e3e;
+  color: black
 }
