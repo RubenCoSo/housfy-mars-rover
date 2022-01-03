@@ -50,7 +50,7 @@ function Mission () {
         for (let i = 0; i < numObstacles; i++) {
           let obstacle = {
             posX:(Math.floor(Math.random() * (20 - 0)) + 0)*25,
-            posY:(Math.floor(Math.random() * (20 - 0)) + 0)*25
+            posY:(Math.floor(Math.random() * (19 - 1)) + 1)*25
           }
     
           obstacles.push(obstacle)

@@ -22,7 +22,7 @@ function HomePage(props) {
       {isInstructionsShown ? 
         <div className="instructions">
           <h1>Instructions</h1>
-          <p>Welcome to the Rover mission on mars. You will have to drive the Rover from the starting point to the base.
+          <p>Welcome to the Rover mission on mars. You will have to drive the Rover (black square) from the starting point to the base (green square).
           for that purpose you have to use the next comands:</p>
           <div>
             <ul className="instructionsList">
@@ -32,7 +32,7 @@ function HomePage(props) {
             </ul>
           </div>
           <p>You can send long instructions "e.g.:FFRFLFL... " though the form. Be careful, the Rover is an expensive robot
-          and it's programmed to stop and reset the instructions if it founds any obstacle on the given route.</p>
+          and it's programmed to stop and reset the instructions if it founds any obstacle(orange square) on the given route.</p>
         </div> : null}
     </div>
   );

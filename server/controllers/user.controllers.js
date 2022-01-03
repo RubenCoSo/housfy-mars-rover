@@ -10,5 +10,5 @@ module.exports.userInfo = (req, res, next)=>{
         .then((user)=>{
             res.json(user.missions)
         })
-        .catch((err)=>console.log(error))
+        .catch((err)=>console.log(err))
 }
